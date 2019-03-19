@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <p class="navbar-brand">Bookers</p>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><a class="glyphicon glyphicon-globe home" aria-hidden="true" href="/users/home"> Home </a></li>
+            <li><a class="glyphicon glyphicon-user users" aria-hidden="true" href="/users"> Users </a></li>
+            <li><a class="glyphicon glyphicon-book books" aria-hidden="true" href="/books"> Books </a></li>
+            <li><a class="glyphicon glyphicon-log-out logout" aria-hidden="true" data-method="delete" href="/users/sign_out"> Log Out </a></li>
+            <% else %>
+            <li><a class="glyphicon glyphicon-home home" href="/"> Home</a></li>
+            <li><a class="glyphicon glyphicon-link about" href="/root/about"> About</a></li>
+            <li><a class="glyphicon glyphicon-edit sign_up" href="/users/sign_up"> sign up</a></li>
+            <li><a class="glyphicon glyphicon-log-in sign_in" href="/users/sign_in"> login</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
+</html>

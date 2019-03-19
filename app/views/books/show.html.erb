@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'users/info', user: @user, book: @newbook %>
+    </div>
+
+    <h3 class="barheadline"> Book detail </h3>
+    <div class="col-lg-9">
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <% if @user.id == current_user.id %>
+          <th></th>
+          <th></th>
+          <% end %>
+        </tr>
+        <tr>
+          <td> <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg", size:'60x60' %>
+            <div class="mininame"> <%= link_to @user.name, user_path(@user), class:"user_#{current_user.id}" %> </div>
+          </td>
+          <td> <%= link_to @book.title, book_path(@book), class:"book_#{@book.id}" %> </td>
+          <td> <%= @book.opinion %> </td>
+          <% if @user.id == current_user.id %>
+          <td> <%= link_to 'Edit', edit_book_path(@book), class:"btn btn-success edit_book_#{@book.id}" %> </td>
+          <td> <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger destroy_book_#{@book.id}" %> </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

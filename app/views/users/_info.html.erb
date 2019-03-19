@@ -1,0 +1,41 @@
+<section class='profile-box'>
+  <h2 class="barheadline"> User Info </h2>
+  <div>
+   <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "user_image", fallback: "no_image.jpg", size:'100x100' %>
+  </div>
+  <br>
+  <table class="table table-striped" style="table-layout:fixed;width:100%;">
+    <colgroup>
+        <col style="width:33%;">
+        <col style="width:66%;">
+    </colgroup>
+    <tr>
+      <td>name</td>
+      <td style="word-wrap:break-word;"><%= user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td style="word-wrap:break-word;"><%= user.body %></td>
+    </tr>
+  </table>
+  <% if user.id == current_user.id %>
+    <%= link_to '', edit_user_path(user), class:"btn btn-default btn-block glyphicon glyphicon-tag edit_user_#{user.id}" %>
+  <% else %>
+    <%= link_to '', user_path(user), class: "btn btn-default btn-block glyphicon glyphicon-tag user_#{user.id}" %>
+  <% end %>
+</section>
+
+<section class="newbook">
+  <h2 class="barheadline"> New book </h2>
+  <%= form_for(book) do |f| %>
+
+  <p> Title </p>
+  <%= f.text_field :title, class:"form-control book_title" %>
+
+  <p> Opinion </p>
+  <%= f.text_area :opinion, class:"form-control book_body" %>
+  <br>
+  <div> <%= f.submit 'Create Book', class: "btn btn-primary btn-block" %> </div>
+
+  <% end %>
+</section>
