@@ -21,13 +21,25 @@
             <div class="mininame"> <%= link_to @user.name, user_path(@user), class:"user_#{current_user.id}" %> </div>
           </td>
           <td> <%= link_to @book.title, book_path(@book), class:"book_#{@book.id}" %> </td>
-          <td> <%= @book.opinion %> </td>
+          <td> <%= @book.body %> </td>
           <% if @user.id == current_user.id %>
           <td> <%= link_to 'Edit', edit_book_path(@book), class:"btn btn-success edit_book_#{@book.id}" %> </td>
           <td> <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger destroy_book_#{@book.id}" %> </td>
           <% end %>
         </tr>
       </table>
+      <h4> Comment </h4>
+      <% @book.book_comments.each do |book_comment| %>
+            <%= book_comment.comment%>
+            <br>
+            <%= attachment_image_tag book_comment.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg", size:'60x60' %>
+            <% if book_comment.user_id == current_user.id %>
+              <%= link_to 'Edit', edit_book_book_comments_path(book_comment.book_id), class:"btn btn-success" %>
+              <%= link_to 'Destroy', book_book_comments_path(book_comment.book_id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
+            <% end %>
+              <div class="mininame"> <%= link_to book_comment.user.name, user_path(book_comment.user_id) %> </div>
+      <% end %>
+      <%= render 'book_comments/edit', book: @book, book_comment: @comment %>
     </div>
   </div>
 </div>

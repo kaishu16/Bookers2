@@ -1,0 +1,23 @@
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+/home/vagrant/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20190714-20857-cj5ntg.rb extconf.rb
+creating Makefile
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" clean
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR="
+compiling binding_ninja.c
+binding_ninja.c: In function ‘auto_inject_binding_invoke’:
+binding_ninja.c:77:21: warning: unused variable ‘ext_mod’ [-Wunused-variable]
+   VALUE method_sym, ext_mod, options, binding, args_ary, cond;
+                     ^~~~~~~
+binding_ninja.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+linking shared-object binding_ninja/binding_ninja.so
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 binding_ninja.so ./.gem.20190714-20857-349e5j/binding_ninja

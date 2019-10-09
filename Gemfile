@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.5.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -67,4 +67,15 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'jquery-rails'
+
+group :test do
+ gem 'rspec-rails'
+ gem "factory_bot_rails"
+ gem 'rspec-parameterized'
+ gem 'faker'
+ gem 'shoulda-matchers'
+ gem 'rails-controller-testing'
+end
+
+gem "jquery-rails"
+gem "pry-byebug"
